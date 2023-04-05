@@ -1,8 +1,7 @@
 package com.asy.tests.grpc.server;
 
-import com.asy.tests.grpc.proto.user.CreateUserRequest;
-import com.asy.tests.grpc.proto.user.CreateUserResponse;
-import com.asy.tests.grpc.proto.user.UserServiceGrpc;
+import com.asy.tests.grpc.proto.user.*;
+import com.google.protobuf.Empty;
 import io.grpc.stub.StreamObserver;
 
 import java.util.Date;
@@ -25,6 +24,30 @@ public class UserServiceImpl extends UserServiceGrpc.UserServiceImplBase {
 
         // Send the response to client
         responseObserver.onNext(createUserResponse);
+
+        // Close the stream
+        responseObserver.onCompleted();
+        System.out.println("Operation completed");
+    }
+
+    @Override
+    public void listAll(Empty request, StreamObserver<UserListResponse> responseObserver) {
+        UserResponse userResponse1 = UserResponse.newBuilder().setName("NAME1").setActive(true).build();
+        UserResponse userResponse2 = UserResponse.newBuilder().setName("NAME2").setActive(false).build();
+        UserResponse userResponse3 = UserResponse.newBuilder().setName("NAME3").setActive(true).build();
+        UserResponse userResponse4 = UserResponse.newBuilder().setName("NAME4").setActive(true).build();
+        UserResponse userResponse5 = UserResponse.newBuilder().setName("NAME5").setActive(true).build();
+
+        UserListResponse userListResponse = UserListResponse.newBuilder()
+                .addUsers(userResponse1)
+                .addUsers(userResponse2)
+                .addUsers(userResponse3)
+                .addUsers(userResponse4)
+                .addUsers(userResponse5)
+                .build();
+
+        // Send the response to client
+        responseObserver.onNext(userListResponse);
 
         // Close the stream
         responseObserver.onCompleted();

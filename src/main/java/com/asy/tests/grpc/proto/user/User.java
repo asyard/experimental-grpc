@@ -24,6 +24,16 @@ public final class User {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_asy_tests_grpc_proto_user_CreateUserResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_asy_tests_grpc_proto_user_UserListResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_asy_tests_grpc_proto_user_UserListResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_asy_tests_grpc_proto_user_UserResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_asy_tests_grpc_proto_user_UserResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -34,23 +44,30 @@ public final class User {
   static {
     java.lang.String[] descriptorData = {
       "\n\nUser.proto\022\035com.asy.tests.grpc.proto.u" +
-      "ser\032\037google/protobuf/timestamp.proto\"\303\001\n" +
-      "\021CreateUserRequest\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002" +
-      " \001(\t\022\r\n\005email\030\003 \001(\t\0225\n\004type\030\004 \001(\0162\'.com." +
-      "asy.tests.grpc.proto.user.UserType\022-\n\tbi" +
-      "rthdate\030\005 \001(\0132\032.google.protobuf.Timestam" +
-      "p\022\016\n\006active\030\006 \001(\010\022\017\n\007numbers\030\007 \003(\t\"5\n\022Cr" +
-      "eateUserResponse\022\016\n\006status\030\001 \001(\005\022\017\n\007mess" +
-      "age\030\002 \001(\t*+\n\010UserType\022\014\n\010STANDARD\020\000\022\010\n\004P" +
-      "AID\020\001\022\007\n\003VIP\020\0022\202\001\n\013UserService\022s\n\ncreate" +
-      "User\0220.com.asy.tests.grpc.proto.user.Cre" +
-      "ateUserRequest\0321.com.asy.tests.grpc.prot" +
-      "o.user.CreateUserResponse\"\000B\002P\001b\006proto3"
+      "ser\032\037google/protobuf/timestamp.proto\032\033go" +
+      "ogle/protobuf/empty.proto\"\303\001\n\021CreateUser" +
+      "Request\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005ema" +
+      "il\030\003 \001(\t\0225\n\004type\030\004 \001(\0162\'.com.asy.tests.g" +
+      "rpc.proto.user.UserType\022-\n\tbirthdate\030\005 \001" +
+      "(\0132\032.google.protobuf.Timestamp\022\016\n\006active" +
+      "\030\006 \001(\010\022\017\n\007numbers\030\007 \003(\t\"5\n\022CreateUserRes" +
+      "ponse\022\016\n\006status\030\001 \001(\005\022\017\n\007message\030\002 \001(\t\"N" +
+      "\n\020UserListResponse\022:\n\005users\030\001 \003(\0132+.com." +
+      "asy.tests.grpc.proto.user.UserResponse\"," +
+      "\n\014UserResponse\022\014\n\004name\030\001 \001(\t\022\016\n\006active\030\002" +
+      " \001(\010*+\n\010UserType\022\014\n\010STANDARD\020\000\022\010\n\004PAID\020\001" +
+      "\022\007\n\003VIP\020\0022\330\001\n\013UserService\022s\n\ncreateUser\022" +
+      "0.com.asy.tests.grpc.proto.user.CreateUs" +
+      "erRequest\0321.com.asy.tests.grpc.proto.use" +
+      "r.CreateUserResponse\"\000\022T\n\007listAll\022\026.goog" +
+      "le.protobuf.Empty\032/.com.asy.tests.grpc.p" +
+      "roto.user.UserListResponse\"\000B\002P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.TimestampProto.getDescriptor(),
+          com.google.protobuf.EmptyProto.getDescriptor(),
         });
     internal_static_com_asy_tests_grpc_proto_user_CreateUserRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -64,7 +81,20 @@ public final class User {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_asy_tests_grpc_proto_user_CreateUserResponse_descriptor,
         new java.lang.String[] { "Status", "Message", });
+    internal_static_com_asy_tests_grpc_proto_user_UserListResponse_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_com_asy_tests_grpc_proto_user_UserListResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_asy_tests_grpc_proto_user_UserListResponse_descriptor,
+        new java.lang.String[] { "Users", });
+    internal_static_com_asy_tests_grpc_proto_user_UserResponse_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_com_asy_tests_grpc_proto_user_UserResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_asy_tests_grpc_proto_user_UserResponse_descriptor,
+        new java.lang.String[] { "Name", "Active", });
     com.google.protobuf.TimestampProto.getDescriptor();
+    com.google.protobuf.EmptyProto.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
 
 option java_multiple_files =  true;
 
@@ -27,6 +28,17 @@ message CreateUserResponse {
   string message = 2;
 }
 
+message UserListResponse {
+  repeated UserResponse users = 1;
+}
+
+message UserResponse {
+  string name = 1;
+  bool active = 2;
+}
+
 service UserService {
   rpc createUser(CreateUserRequest) returns (CreateUserResponse) {}
+
+  rpc listAll(google.protobuf.Empty) returns (UserListResponse) {}
 }

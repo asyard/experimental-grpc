@@ -46,6 +46,37 @@ public final class UserServiceGrpc {
     return getCreateUserMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.google.protobuf.Empty,
+      com.asy.tests.grpc.proto.user.UserListResponse> getListAllMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "listAll",
+      requestType = com.google.protobuf.Empty.class,
+      responseType = com.asy.tests.grpc.proto.user.UserListResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.google.protobuf.Empty,
+      com.asy.tests.grpc.proto.user.UserListResponse> getListAllMethod() {
+    io.grpc.MethodDescriptor<com.google.protobuf.Empty, com.asy.tests.grpc.proto.user.UserListResponse> getListAllMethod;
+    if ((getListAllMethod = UserServiceGrpc.getListAllMethod) == null) {
+      synchronized (UserServiceGrpc.class) {
+        if ((getListAllMethod = UserServiceGrpc.getListAllMethod) == null) {
+          UserServiceGrpc.getListAllMethod = getListAllMethod =
+              io.grpc.MethodDescriptor.<com.google.protobuf.Empty, com.asy.tests.grpc.proto.user.UserListResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "listAll"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.google.protobuf.Empty.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.asy.tests.grpc.proto.user.UserListResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new UserServiceMethodDescriptorSupplier("listAll"))
+              .build();
+        }
+      }
+    }
+    return getListAllMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -100,6 +131,13 @@ public final class UserServiceGrpc {
         io.grpc.stub.StreamObserver<com.asy.tests.grpc.proto.user.CreateUserResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCreateUserMethod(), responseObserver);
     }
+
+    /**
+     */
+    default void listAll(com.google.protobuf.Empty request,
+        io.grpc.stub.StreamObserver<com.asy.tests.grpc.proto.user.UserListResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListAllMethod(), responseObserver);
+    }
   }
 
   /**
@@ -136,6 +174,14 @@ public final class UserServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getCreateUserMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void listAll(com.google.protobuf.Empty request,
+        io.grpc.stub.StreamObserver<com.asy.tests.grpc.proto.user.UserListResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getListAllMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -159,6 +205,13 @@ public final class UserServiceGrpc {
     public com.asy.tests.grpc.proto.user.CreateUserResponse createUser(com.asy.tests.grpc.proto.user.CreateUserRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getCreateUserMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.asy.tests.grpc.proto.user.UserListResponse listAll(com.google.protobuf.Empty request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getListAllMethod(), getCallOptions(), request);
     }
   }
 
@@ -185,9 +238,18 @@ public final class UserServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getCreateUserMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.asy.tests.grpc.proto.user.UserListResponse> listAll(
+        com.google.protobuf.Empty request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getListAllMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_CREATE_USER = 0;
+  private static final int METHODID_LIST_ALL = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -209,6 +271,10 @@ public final class UserServiceGrpc {
         case METHODID_CREATE_USER:
           serviceImpl.createUser((com.asy.tests.grpc.proto.user.CreateUserRequest) request,
               (io.grpc.stub.StreamObserver<com.asy.tests.grpc.proto.user.CreateUserResponse>) responseObserver);
+          break;
+        case METHODID_LIST_ALL:
+          serviceImpl.listAll((com.google.protobuf.Empty) request,
+              (io.grpc.stub.StreamObserver<com.asy.tests.grpc.proto.user.UserListResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -235,6 +301,13 @@ public final class UserServiceGrpc {
               com.asy.tests.grpc.proto.user.CreateUserRequest,
               com.asy.tests.grpc.proto.user.CreateUserResponse>(
                 service, METHODID_CREATE_USER)))
+        .addMethod(
+          getListAllMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.google.protobuf.Empty,
+              com.asy.tests.grpc.proto.user.UserListResponse>(
+                service, METHODID_LIST_ALL)))
         .build();
   }
 
@@ -284,6 +357,7 @@ public final class UserServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new UserServiceFileDescriptorSupplier())
               .addMethod(getCreateUserMethod())
+              .addMethod(getListAllMethod())
               .build();
         }
       }
